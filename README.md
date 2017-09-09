@@ -8,3 +8,4 @@ Once we assign group to the user then client connects to any backend server at a
 
 **Load balancer uses WRR algorithm** for divide traffic between server groups.
 
+![LoadBalancer](https://github.com/meldmy/weighted-sticky-load-balancer/blob/master/myLoadBalancer.jpg)
