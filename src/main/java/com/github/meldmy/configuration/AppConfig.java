@@ -44,11 +44,12 @@ public class AppConfig {
     @Bean
     public UndertowEmbeddedServletContainerFactory embeddedServletContainerFactory() {
         UndertowEmbeddedServletContainerFactory factory = new UndertowEmbeddedServletContainerFactory();
-        factory.addBuilderCustomizers(builder -> builder
-                .addHttpListener(parseInt(serverPort), host)
-                .setDirectBuffers(true));
-        factory.setIoThreads(8);
-        factory.setWorkerThreads(16);
+        setListenerHostAndPort(factory);
         return factory;
+    }
+
+    private void setListenerHostAndPort(UndertowEmbeddedServletContainerFactory factory) {
+        factory.addBuilderCustomizers(builder ->
+                builder.addHttpListener(parseInt(serverPort), host));
     }
 }
