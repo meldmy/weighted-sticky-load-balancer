@@ -127,7 +127,7 @@ $(document).ready(function() {
         widgets: ['zebra']
     });
 
-    var data = {"OkPercent": 99.92836055894509, "KoPercent": 0.07163944105491045};
+    var data = {"OkPercent": 99.9612390836603, "KoPercent": 0.038760916339703834};
     var dataset = [
         {
             "label" : "KO",
@@ -167,7 +167,7 @@ $(document).ready(function() {
     });
 
     // Creates APDEX table
-    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.989580791182838, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Toleration threshold)  ", "F (Frustration threshold)", "Label"], "items": [{"data": [0.989580791182838, 500, 1500, "HTTP Request"], "isController": false}]}, function(index, item){
+    createTable($("#apdexTable"), {"supportsControllersDiscrimination": true, "overall": {"data": [0.9954976690714256, 500, 1500, "Total"], "isController": false}, "titles": ["Apdex", "T (Toleration threshold)  ", "F (Frustration threshold)", "Label"], "items": [{"data": [0.9954976690714256, 500, 1500, "HTTP Request"], "isController": false}]}, function(index, item){
         switch(index){
             case 0:
                 item = item.toFixed(3);
@@ -181,7 +181,7 @@ $(document).ready(function() {
     }, [[0, 0]], 3);
 
     // Create statistics table
-    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 635125, 455, 0.07163944105491045, 78.49528360558978, 0, 1571, 80.0, 136.0, 185.0, 6339.648443348672, 907.6209871871973, 852.6719443262579], "isController": false}, "titles": ["Label", "#Samples", "KO", "Error %", "Average", "Min", "Max", "90th pct", "95th pct", "99th pct", "Throughput", "Received", "Sent"], "items": [{"data": ["HTTP Request", 635125, 455, 0.07163944105491045, 78.49528360558978, 0, 1571, 80.0, 136.0, 185.0, 6339.648443348672, 907.6209871871973, 852.6719443262579], "isController": false}]}, function(index, item){
+    createTable($("#statisticsTable"), {"supportsControllersDiscrimination": true, "overall": {"data": ["Total", 758496, 294, 0.038760916339703834, 53.01434944943367, 0, 3047, 54.0, 103.0, 155.0, 7363.681374690549, 1048.6827285386632, 990.9348965917917], "isController": false}, "titles": ["Label", "#Samples", "KO", "Error %", "Average", "Min", "Max", "90th pct", "95th pct", "99th pct", "Throughput", "Received", "Sent"], "items": [{"data": ["HTTP Request", 758496, 294, 0.038760916339703834, 53.01434944943367, 0, 3047, 54.0, 103.0, 155.0, 7363.681374690549, 1048.6827285386632, 990.9348965917917], "isController": false}]}, function(index, item){
         switch(index){
             // Errors pct
             case 3:
@@ -209,7 +209,7 @@ $(document).ready(function() {
     }, [[0, 0]], 0, summaryTableHeader);
 
     // Create error table
-    createTable($("#errorsTable"), {"supportsControllersDiscrimination": false, "titles": ["Type of error", "Number of errors", "% in errors", "% in all samples"], "items": [{"data": ["Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset", 298, 65.49450549450549, 0.04691989765794135], "isController": false}, {"data": ["Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset by peer", 152, 33.40659340659341, 0.023932296791970085], "isController": false}, {"data": ["Non HTTP response code: java.net.SocketException/Non HTTP response message: Broken pipe", 5, 1.098901098901099, 7.87246604999016E-4], "isController": false}]}, function(index, item){
+    createTable($("#errorsTable"), {"supportsControllersDiscrimination": false, "titles": ["Type of error", "Number of errors", "% in errors", "% in all samples"], "items": [{"data": ["Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset", 140, 47.61904761904762, 0.01845757920938278], "isController": false}, {"data": ["Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset by peer", 152, 51.70068027210884, 0.020039657427329875], "isController": false}, {"data": ["Non HTTP response code: java.net.SocketException/Non HTTP response message: Broken pipe", 2, 0.6802721088435374, 2.636797029911825E-4], "isController": false}]}, function(index, item){
         switch(index){
             case 2:
             case 3:
@@ -220,7 +220,7 @@ $(document).ready(function() {
     }, [[1, 1]]);
 
         // Create top5 errors by sampler
-    createTable($("#top5ErrorsBySamplerTable"), {"supportsControllersDiscrimination": false, "overall": {"data": ["Total", 635125, 455, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset", 298, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset by peer", 152, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Broken pipe", 5, null, null, null, null], "isController": false}, "titles": ["Sample", "#Samples", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors"], "items": [{"data": ["HTTP Request", 635125, 455, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset", 298, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset by peer", 152, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Broken pipe", 5, null, null, null, null], "isController": false}]}, function(index, item){
+    createTable($("#top5ErrorsBySamplerTable"), {"supportsControllersDiscrimination": false, "overall": {"data": ["Total", 758496, 294, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset by peer", 152, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset", 140, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Broken pipe", 2, null, null, null, null], "isController": false}, "titles": ["Sample", "#Samples", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors", "Error", "#Errors"], "items": [{"data": ["HTTP Request", 758496, 294, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset by peer", 152, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Connection reset", 140, "Non HTTP response code: java.net.SocketException/Non HTTP response message: Broken pipe", 2, null, null, null, null], "isController": false}]}, function(index, item){
         return item;
     }, [[0, 0]], 0);
 
