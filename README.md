@@ -4,7 +4,7 @@ This is simple REST load balancer that is able to route traffic to different bac
 
 Once we assign group to the user client connects to any backend server at any time, the user experience is unaffected. This is achieved by storing usernames mapped to assigned group name.
 
-**Load balancer isn't session-aware** and stores hashed usernames in the HashMap to quickly receive a group name. That's why it can work with the system that doesn't store HTTP cookie and prevent unnesessary hashing.
+**Load balancer isn't session-aware** and stores hashed usernames in the HashMap to quickly receive a group name. That's why it can work with the system that doesn't store HTTP cookie and prevent unnesessary hashing. User id hashed by using [MurmurHash3](https://en.wikipedia.org/wiki/MurmurHash#MurmurHash3)
 
 **Load balancer uses WRR algorithm** to divide traffic between server groups.
 
