@@ -4,9 +4,11 @@ import com.github.meldmy.entity.ServerDetails;
 
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -28,12 +30,14 @@ public class GroupPoolInitializer {
     }
 
     private Set<ServerDetails> receiveServerPool() {
-        Set<ServerDetails> pool = new LinkedHashSet<>();
-        for (Entry<String, Integer> e : weightPerGroup.entrySet()) {
-            ServerDetails serverDetails = new ServerDetails(e.getKey(), e.getValue());
-            pool.add(serverDetails);
-        }
-        return pool;
+        return weightPerGroup.entrySet()
+                .stream()
+                .map(toServerDetails())
+                .collect(toCollection(LinkedHashSet::new));
+    }
+
+    private Function<Entry<String, Integer>, ServerDetails> toServerDetails() {
+        return groupEntry -> new ServerDetails(groupEntry.getKey(), groupEntry.getValue());
     }
 
     private void checkWeightParameters(Set<ServerDetails> serverPool) {

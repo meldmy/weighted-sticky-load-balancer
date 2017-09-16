@@ -1,11 +1,9 @@
 package com.github.meldmy.route;
 
-import com.google.common.hash.HashFunction;
+import com.github.meldmy.route.hash.UserIdHasher;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 
 /**
@@ -13,39 +11,38 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  */
 public class GroupRouter {
 
-    private static final Map<Long, String> USERS_HASH_PER_GROUP = new ConcurrentHashMap<>();
-    private final HashFunction stringHashFunction;
+    private final UserIdHasher hasher;
     private final GroupNameReceiver groupNameReceiver;
+    private final Map<Long, String> usersHashPerGroup;
 
-    public GroupRouter(HashFunction stringHashFunction, GroupNameReceiver groupNameReceiver) {
-        this.stringHashFunction = stringHashFunction;
+    public GroupRouter(GroupNameReceiver groupNameReceiver, UserIdHasher hasher) {
+        this.hasher = hasher;
         this.groupNameReceiver = groupNameReceiver;
+        usersHashPerGroup = new ConcurrentHashMap<>();
     }
 
     public String receiveGroupName(String userId) {
-        long hashedUserId = hashUserId(userId);
+        long hashedUserId = hasher.hash(userId);
+        return receiveGroupName(hashedUserId);
+    }
+
+    private String receiveGroupName(long hashedUserId) {
         return isPreviouslyStoredUserId(hashedUserId)
                 ? getPreviouslyStoredUserId(hashedUserId)
                 : putAndGetGroupName(hashedUserId);
     }
 
-    private long hashUserId(String userId) {
-        return stringHashFunction
-                .hashString(userId, UTF_8)
-                .asLong();
-    }
-
     private String getPreviouslyStoredUserId(long hashedUserId) {
-        return USERS_HASH_PER_GROUP.get(hashedUserId);
+        return usersHashPerGroup.get(hashedUserId);
     }
 
     private String putAndGetGroupName(long hashedUserId) {
         String groupName = groupNameReceiver.getNextGroupName();
-        USERS_HASH_PER_GROUP.put(hashedUserId, groupName);
+        usersHashPerGroup.put(hashedUserId, groupName);
         return groupName;
     }
 
     private boolean isPreviouslyStoredUserId(long hashedUserId) {
-        return USERS_HASH_PER_GROUP.containsKey(hashedUserId);
+        return usersHashPerGroup.containsKey(hashedUserId);
     }
 }

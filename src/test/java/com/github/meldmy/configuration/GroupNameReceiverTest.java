@@ -11,7 +11,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.Random;
 
-import static com.github.meldmy.route.GroupRouterTest.getSomeWeightedGroups;
+import static com.github.meldmy.util.TestDummies.SOME_WEIGHTED_GROUPS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
@@ -22,12 +22,14 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class GroupNameReceiverTest {
 
-    @Mock private Random randomGenerator;
-    @InjectMocks private GroupNameReceiver groupNameReceiver;
+    @Mock
+    private Random randomGenerator;
+    @InjectMocks
+    private GroupNameReceiver groupNameReceiver;
 
     @Before
     public void setUp() {
-        groupNameReceiver = new GroupNameReceiver(getSomeWeightedGroups());
+        groupNameReceiver = new GroupNameReceiver(SOME_WEIGHTED_GROUPS);
         ReflectionTestUtils.setField(groupNameReceiver, "randomGenerator", randomGenerator);
     }
 

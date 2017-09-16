@@ -3,6 +3,7 @@ package com.github.meldmy.configuration;
 import com.github.meldmy.configuration.init.GroupPoolInitializer;
 import com.github.meldmy.route.GroupNameReceiver;
 import com.github.meldmy.route.GroupRouter;
+import com.github.meldmy.route.hash.UserIdHasher;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.embedded.undertow.UndertowEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,8 @@ public class AppConfig {
 
     @Bean
     public GroupRouter groupRouter(){
-        return new GroupRouter(murmur3_128(), weightedGroupReceiver());
+        UserIdHasher hasher = new UserIdHasher(murmur3_128());
+        return new GroupRouter(weightedGroupReceiver(), hasher);
     }
 
     @Bean
