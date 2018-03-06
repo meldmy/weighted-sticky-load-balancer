@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.6.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '1.5.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -17,27 +17,27 @@ version = '1.0.0'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 configurations {
-	compile.exclude module: 'spring-boot-starter-tomcat'
-	compile.exclude group: 'org.apache.tomcat'
+    compile.exclude module: 'spring-boot-starter-tomcat'
+    compile.exclude group: 'org.apache.tomcat'
 }
 
 dependencies {
-	compile 'org.springframework.boot:spring-boot-starter-web'
-	compile 'org.springframework.boot:spring-boot-starter-undertow'
-	compile 'com.google.guava:guava:23.0'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-undertow'
+    compile 'com.google.guava:guava:23.0'
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 task run(type: JavaExec) {
-	main = 'com.github.meldmy.WeightedLoadBalancerApplication'
-	classpath = sourceSets.main.runtimeClasspath
+    main = 'com.github.meldmy.WeightedLoadBalancerApplication'
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '3.0'
+    gradleVersion = '3.0'
 }
