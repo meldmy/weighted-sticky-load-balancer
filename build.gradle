@@ -11,6 +11,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'jacoco'
 apply plugin: 'org.springframework.boot'
 
 version = '1.0.0'
@@ -25,11 +26,39 @@ configurations {
     compile.exclude group: 'org.apache.tomcat'
 }
 
+test {
+
+    //explicitly include tests
+    include 'com/github/meldmy/**'
+
+    // listen to events in the test execution lifecycle
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: " + descriptor)
+    }
+
+    // Failing the 'test' task on the first test failure
+    //    failFast = true
+
+    // Listen to standard out and standard error of the test JVM(s)
+    onOutput { descriptor, event ->
+        logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message)
+    }
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs "test/java"
+        }
+    }
+}
+
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-undertow'
     compile 'com.google.guava:guava:23.0'
 
+    testCompile "junit:junit:4.11"
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
