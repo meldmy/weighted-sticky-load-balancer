@@ -5,24 +5,24 @@ package com.github.meldmy.entity;
  */
 public class ServerDetails {
 
-    private final String groupName;
-    private final int weight;
+  private final String groupName;
+  private final int weight;
 
-    public ServerDetails(String groupName, int weight) {
-        this.groupName = groupName;
-        this.weight = weight;
-    }
+  public ServerDetails(String groupName, int weight) {
+    this.groupName = groupName;
+    this.weight = weight;
+  }
 
-    public String getGroupName() {
-        return groupName;
-    }
+  public String getGroupName() {
+    return groupName;
+  }
 
-    public int getWeight() {
-        return weight;
-    }
+  public int getWeight() {
+    return weight;
+  }
 
-    @Override
-    public String toString() {
-        return groupName +  ":" + weight;
-    }
+  @Override
+  public String toString() {
+    return groupName + ":" + weight;
+  }
 }

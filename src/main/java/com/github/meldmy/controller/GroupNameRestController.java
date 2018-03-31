@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GroupNameRestController {
 
-    @Autowired private GroupRouter groupRouter;
+  @Autowired
+  private GroupRouter groupRouter;
 
-    @RequestMapping(value = "/route", method = RequestMethod.GET)
-    public String getGroupName(@RequestParam("id") final String userId) {
-        return groupRouter.receiveGroupName(userId);
-    }
+  @RequestMapping(value = "/route", method = RequestMethod.GET)
+  public String getGroupName(@RequestParam("id") final String userId) {
+    return groupRouter.receiveGroupName(userId);
+  }
 }

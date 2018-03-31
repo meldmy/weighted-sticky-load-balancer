@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan
 public class WeightedLoadBalancerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WeightedLoadBalancerApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(WeightedLoadBalancerApplication.class, args);
+  }
 }

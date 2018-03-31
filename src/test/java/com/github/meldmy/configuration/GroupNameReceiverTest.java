@@ -1,20 +1,19 @@
 package com.github.meldmy.configuration;
 
+import static com.github.meldmy.util.TestDummies.SOME_WEIGHTED_GROUPS;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.util.ReflectionTestUtils.setField;
+
 import com.github.meldmy.route.GroupNameReceiver;
+import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.test.util.ReflectionTestUtils;
-
-import java.util.Random;
-
-import static com.github.meldmy.util.TestDummies.SOME_WEIGHTED_GROUPS;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Mockito.when;
+import org.mockito.junit.MockitoJUnitRunner;
 
 /**
  * @author Dmytro Melnychuk
@@ -22,26 +21,26 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class GroupNameReceiverTest {
 
-    @Mock
-    private Random randomGenerator;
-    @InjectMocks
-    private GroupNameReceiver groupNameReceiver;
+  @Mock
+  private Random randomGenerator;
+  @InjectMocks
+  private GroupNameReceiver groupNameReceiver;
 
-    @Before
-    public void setUp() {
-        groupNameReceiver = new GroupNameReceiver(SOME_WEIGHTED_GROUPS);
-        ReflectionTestUtils.setField(groupNameReceiver, "randomGenerator", randomGenerator);
-    }
+  @Before
+  public void setUp() {
+    groupNameReceiver = new GroupNameReceiver(SOME_WEIGHTED_GROUPS);
+    setField(groupNameReceiver, "randomGenerator", randomGenerator);
+  }
 
-    @Test
-    public void shouldReturnRandomNextGroupName() {
-        int firstRandom = 15;
-        int secondRandom = 40;
-        String expectedFirstGroupName = "A";
-        String expectedSecondGroupName = "B";
-        when(randomGenerator.nextInt(anyInt())).thenReturn(firstRandom).thenReturn(secondRandom);
+  @Test
+  public void shouldReturnRandomNextGroupName() {
+    var firstRandom = 15;
+    var secondRandom = 40;
+    var expectedFirstGroupName = "A";
+    var expectedSecondGroupName = "B";
+    when(randomGenerator.nextInt(anyInt())).thenReturn(firstRandom).thenReturn(secondRandom);
 
-        assertThat(groupNameReceiver.getNextGroupName()).isEqualTo(expectedFirstGroupName);
-        assertThat(groupNameReceiver.getNextGroupName()).isEqualTo(expectedSecondGroupName);
-    }
+    assertThat(groupNameReceiver.getNextGroupName()).isEqualTo(expectedFirstGroupName);
+    assertThat(groupNameReceiver.getNextGroupName()).isEqualTo(expectedSecondGroupName);
+  }
 }
