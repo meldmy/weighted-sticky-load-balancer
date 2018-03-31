@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.6.RELEASE'
+        springBootVersion = '2.0.0.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -11,11 +11,12 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'jacoco'
 apply plugin: 'org.springframework.boot'
 
 version = '1.0.0'
-sourceCompatibility = 1.8
+sourceCompatibility = "1.10"
+targetCompatibility = "1.10"
+//compileJava.options.fork = true
 
 repositories {
     mavenCentral()
@@ -54,12 +55,12 @@ sourceSets {
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-undertow'
-    compile 'com.google.guava:guava:23.0'
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-undertow:$springBootVersion"
+    compile "com.google.guava:guava:23.0"
 
-    testCompile "junit:junit:4.11"
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile "org.assertj:assertj-core:3.9.0"
+    testCompile "org.springframework.boot:spring-boot-starter-test:2.0.0.RELEASE"
 }
 
 task run(type: JavaExec) {
@@ -68,5 +69,5 @@ task run(type: JavaExec) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.0'
+    gradleVersion = '4.6'
 }
