@@ -8,11 +8,9 @@ import com.github.meldmy.entity.ServerDetails;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.NavigableMap;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 
@@ -38,14 +36,10 @@ public class GroupPoolInitializer {
 
 
   private Set<ServerDetails> receiveServerPool() {
-    return weightPerGroup.entrySet().stream().map(toServerDetails())
+    return weightPerGroup.entrySet()
+        .stream()
+        .map(ServerDetails::new)
         .collect(toCollection(LinkedHashSet::new));
-  }
-
-
-  private Function<Entry<String, Integer>, ServerDetails> toServerDetails() {
-    return groupEntry -> new ServerDetails(
-        groupEntry.getKey(), groupEntry.getValue());
   }
 
 
