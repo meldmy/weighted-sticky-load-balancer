@@ -1,5 +1,7 @@
 package com.github.meldmy.route;
 
+import static java.util.Optional.ofNullable;
+
 import com.github.meldmy.route.hash.UserIdHasher;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -26,22 +28,7 @@ public class GroupRouter {
   }
 
   private String receiveGroupName(long hashedUserId) {
-    return isPreviouslyStoredUserId(hashedUserId)
-        ? getPreviouslyStoredUserId(hashedUserId)
-        : putAndGetGroupName(hashedUserId);
-  }
-
-  private String getPreviouslyStoredUserId(long hashedUserId) {
-    return usersHashPerGroup.get(hashedUserId);
-  }
-
-  private String putAndGetGroupName(long hashedUserId) {
     var groupName = groupNameReceiver.getNextGroupName();
-    usersHashPerGroup.put(hashedUserId, groupName);
-    return groupName;
-  }
-
-  private boolean isPreviouslyStoredUserId(long hashedUserId) {
-    return usersHashPerGroup.containsKey(hashedUserId);
+    return ofNullable(usersHashPerGroup.putIfAbsent(hashedUserId, groupName)).orElse(groupName);
   }
 }
