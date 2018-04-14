@@ -15,11 +15,11 @@ Once we assign group to the user client connects to any backend server at any ti
 - **HTTP response**: someGroupName
 
 Example request:
-`curl http://0.0.0.0:7777/route?id=meldmy`
+`curl http://127.0.0.1:8899/route?id=meldmy`
 
 ## Default server settings:
 - **host**: 127.0.0.1
-- **port**: 7777
+- **port**: 8899
 - **undertow.io-threads**: 8
 - **undertow.worker-threads**: 16
 
