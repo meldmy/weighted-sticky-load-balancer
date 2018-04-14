@@ -21,8 +21,10 @@ class AggregatedServerDetails {
   }
 
   private List<Integer> receiveAbsoluteWeights() {
-    return serverPool.stream().map(ServerDetails::getWeight)
-        .filter(isWeightMoreThanZero()).collect(toList());
+    return serverPool.stream()
+        .map(ServerDetails::getWeight)
+        .filter(isWeightMoreThanZero())
+        .collect(toList());
   }
 
   private Predicate<Integer> isWeightMoreThanZero() {
