@@ -2,7 +2,7 @@ package com.github.meldmy.configuration;
 
 import static com.github.meldmy.util.TestDummies.SOME_WEIGHTED_GROUPS;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
