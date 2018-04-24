@@ -1,6 +1,7 @@
 package com.github.meldmy.configuration;
 
 import static com.google.common.hash.Hashing.murmur3_128;
+import static java.lang.Integer.parseInt;
 
 import com.github.meldmy.configuration.init.GroupPoolInitializer;
 import com.github.meldmy.route.GroupNameReceiver;
@@ -24,8 +25,8 @@ public class AppConfig {
   public String host;
   @Value("#{${groups.weight}}")
   private Map<String, Integer> weightPerGroup;
-  @Value("${server.port}")
-  private String serverPort;
+  @Value("${server.undertow.port}")
+  private String serverUndertowPort;
 
   @Bean
   public GroupRouter groupRouter() {
@@ -49,6 +50,6 @@ public class AppConfig {
 
   private void setListenerHostAndPort(UndertowServletWebServerFactory factory) {
     factory.addBuilderCustomizers(builder ->
-        builder.addHttpListener(18800, host));
+        builder.addHttpListener(parseInt(serverUndertowPort), host));
   }
 }
