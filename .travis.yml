@@ -1,0 +1,38 @@
+language: java
+
+
+before_install:
+ - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+
+matrix:
+ include:
+     - env: JDK='OpenJDK 10'
+       install: . ./install-jdk.sh -F 10 -L GPL</em>
+
+os:
+  - linux
+
+branches:
+  only:
+    - master
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+install:
+  - gradle assemble
+
+before_script:
+  - git fetch
+  - git checkout -b gh-pages
+  - git merge origin/master
+  - git rm --cached --ignore-unmatch index.html
+
+script:
+  - ./gradlew clean publish -i --continue
+  - ./gradlew -b finalize.gradle finalize -i
