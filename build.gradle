@@ -10,6 +10,11 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.gradle.build-scan' version '1.13.1'
+}
+
+
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'org.springframework.boot'
@@ -89,6 +94,13 @@ dependencies {
 task run(type: JavaExec) {
     main = 'com.github.meldmy.WeightedLoadBalancerApplication'
     classpath = sourceSets.main.runtimeClasspath
+}
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+
+    publishAlways()
 }
 
 task wrapper(type: Wrapper) {
