@@ -1,38 +1,26 @@
 language: java
 
+sudo: false
+dist: trusty
 
+
+# Get latest install-jdk.sh script
 before_install:
- - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 
 matrix:
- include:
-     - env: JDK='OpenJDK 10'
-       install: . ./install-jdk.sh -F 10 -L GPL</em>
-
-os:
-  - linux
-
-branches:
-  only:
-    - master
-
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-
-install:
-  - gradle assemble
-
-before_script:
-  - git fetch
-  - git checkout -b gh-pages
-  - git merge origin/master
-  - git rm --cached --ignore-unmatch index.html
+  include:
+# Java 10 "Oracle JDK" (not yet provided by Travis CI)
+    - env: JDK='Oracle JDK 10'
+      install: . ./install-jdk.sh -F 10 -L BCL
+# Java 10 "OpenJDK"
+    - env: JDK='OpenJDK 10' JACOCO='-PenableJaCoCo'
+      install: . ./install-jdk.sh -F 10 -L GPL
 
 script:
-  - ./gradlew clean publish -i --continue
-  - ./gradlew -b finalize.gradle finalize -i
+# Display Gradle, Groovy, JVM and other versions
+  - ./gradlew --version
+  - ./gradlew --scan --stacktrace --warning-mode=all build
+
+after_success:
+  - test -v JACOCO && ./gradlew ${JACOCO} jacocoRootReport
