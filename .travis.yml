@@ -13,5 +13,6 @@ script:
 - "./gradlew --version"
 - "./gradlew --scan --stacktrace --warning-mode=all build"
 notifications:
+  email: false
   slack:
     secure: IQmRytwOfY/KRshMyNcfKgmyBQO2CABkOlGt4LTTlThBbOFTbcw+t6T5Lp+WcV5VdQXIaqUED/+KRATpbySSZ0ZLu7NYtRp208u/71ya/5tLnSqqcMmnNVLuWKbPB2zkt4tC4JhYQcOiAdMbMNvr87Ef3CAKouRfd8Z9HvGx/Fob2oJhN9wQ5xr89emKqbotiLVkPQcjH2eK3VVh5z0vnqTYYmoeO+ncfWTT6N/2waXQacTKhFfeTrUiysZXzzDC6JMBcDI4nPt398iV1tmWypK+d/VZK4u/oM1lireKMxgPyUnloSkQzMSTjYBjUWECVd9Oem/5AdW6b1tMbAwQ6ZPINP0qZ5yLqLsiiPQeWxijxPc9fINwIN9nki2X0jT8SAObvcvwDwXRXg9FOa3IV73AkOSUS9LuVeRrzkIHD3naYL0TmpdkHFFfN/LRZ+ASNnvDDSklFHjNyWJEP6/FPrUvZTFdZUWNEos3H6ewr6Z1qclrAijyIq8UUQvDZSsig9vjMjSX9ZUoMExRwcqrTIsYJpLYF4e05tLDfaIW7hfiSv/83kUz/KAJHUUWAwWnRAAjdaVa1UG8F+J/Wa1xAl+Lu78TRGTF8lICgvqhrkkGXqRK2sL0codf/XyrkqlhTxbLfOavdTQQyRvaMffLgw73gqQgtNlACb1FN2fecp0=
