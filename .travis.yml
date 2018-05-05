@@ -21,3 +21,8 @@ script:
 # Display Gradle, Groovy, JVM and other versions
   - ./gradlew --version
   - ./gradlew --scan --stacktrace --warning-mode=all build
+
+notifications:
+   slack: 'java-geek:eUFAa8cogpPcs6twxmJGUkJY'
+    on_success: change # default: always
+    on_failure: always # default: always
