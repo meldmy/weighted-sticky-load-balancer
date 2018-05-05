@@ -21,6 +21,3 @@ script:
 # Display Gradle, Groovy, JVM and other versions
   - ./gradlew --version
   - ./gradlew --scan --stacktrace --warning-mode=all build
-
-after_success:
-  - test -v JACOCO && ./gradlew ${JACOCO} jacocoRootReport
