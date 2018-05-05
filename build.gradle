@@ -22,6 +22,7 @@ apply plugin: 'application'
 
 //Default JVM arguments are applied to the run tasks and scripts
 applicationDefaultJvmArgs = ["-Xms1024m", "-Xmx2048m"]
+mainClassName = "com.github.meldmy.WeightedLoadBalancerApplication"
 version = '1.0.0'
 sourceCompatibility = "1.10"
 targetCompatibility = "1.10"
@@ -94,7 +95,7 @@ dependencies {
     testCompile "org.springframework.boot:spring-boot-starter-test:2.0.0.RELEASE"
 }
 
-task run(type: JavaExec) {
+task runBoot(type: JavaExec) {
     main = 'com.github.meldmy.WeightedLoadBalancerApplication'
     classpath = sourceSets.main.runtimeClasspath
 }
