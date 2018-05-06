@@ -97,11 +97,6 @@ dependencies {
     testCompile "org.springframework.boot:spring-boot-starter-test:2.0.0.RELEASE"
 }
 
-task runBoot(type: JavaExec) {
-    main = 'com.github.meldmy.WeightedLoadBalancerApplication'
-    classpath = sourceSets.main.runtimeClasspath
-}
-
 buildScan {
     termsOfServiceUrl = 'https://gradle.com/terms-of-service'
     termsOfServiceAgree = 'yes'
