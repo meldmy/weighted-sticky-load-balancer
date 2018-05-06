@@ -1,4 +1,4 @@
-# Weighted sticky load balancer [![Build Status](https://travis-ci.org/meldmy/weighted-sticky-load-balancer.svg?branch=master)](https://travis-ci.org/meldmy/weighted-sticky-load-balancer)
+# Weighted sticky load balancer [![Build Status](https://travis-ci.org/meldmy/weighted-sticky-load-balancer.svg?branch=master)](https://travis-ci.org/meldmy/weighted-sticky-load-balancer) [![Coverage Status](https://coveralls.io/repos/github/meldmy/weighted-sticky-load-balancer/badge.svg?branch=master)](https://coveralls.io/github/meldmy/weighted-sticky-load-balancer?branch=master)
 
 This is simple REST load balancer that is able to route traffic to different backends depending on a hashed user id. Hashed user ids are mapped to group names that user falls into. To receive hash value from user id uses [MurmurHash3](https://en.wikipedia.org/wiki/MurmurHash#MurmurHash3)
 
