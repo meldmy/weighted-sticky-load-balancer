@@ -10,8 +10,16 @@ matrix:
   - env: JDK='OpenJDK 10' JACOCO='-PenableJaCoCo'
     install: ". ./install-jdk.sh -F 10 -L GPL"
 script:
-- "./gradlew --version"
-- "./gradlew --scan --stacktrace --warning-mode=all build"
+  - "./gradlew --version"
+  - "./gradlew --scan --stacktrace --warning-mode=all build"
+
+after_success:
+  - ./gradlew check jacocoTestReport coveralls
+  - ./gradlew cobertura coveralls
+
+after_failure:
+  - ./gradlew clean check --debug
+
 notifications:
   email: false
   slack:
