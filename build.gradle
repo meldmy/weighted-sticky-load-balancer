@@ -35,6 +35,12 @@ repositories {
     mavenCentral()
 }
 
+bootJar {
+    baseName = 'weighted-sticky-load-balancer'
+    version =  '0.1.0'
+}
+
+
 //jacoco {
 //    toolVersion = "0.8.1"
 //    reportsDir = file("$buildDir/customJacocoReportDir")
