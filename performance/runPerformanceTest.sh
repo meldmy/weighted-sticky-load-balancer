@@ -1,16 +1,17 @@
 #!/bin/sh
 
 timestamp=$(date +%Y%m%d_%H%M%S)
-#TODO:// change container to JMeter 4.0
+#TODO:// change container to newer JMeter version that will support JDK-10
 docker run \
-     -v $1:/jmeter \
-     -t droplr/jmeter \
-     -n \
-     -t "PerformanceTestPlan.jmx" \
-     -j ./result/jmeter_$timestamp \
-     -l ./result/result_$timestamp.jtl \
-     -e \
-     -o report__$(date +%Y%m%d_%H%M%S)/
+	--name jmeter_performance \
+	--mount source=$1,target=/jmeter \
+	-t droplr/jmeter \
+	-n \
+	-t "PerformanceTestPlan.jmx" \
+	-j ./result/jmeter_$timestamp \
+	-l ./result/result_$timestamp.jtl \
+	-e \
+	-o report__$(date +%Y%m%d_%H%M%S)/
 
 
 
