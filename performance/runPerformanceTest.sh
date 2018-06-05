@@ -3,6 +3,7 @@
 timestamp=$(date +%Y%m%d_%H%M%S)
 #TODO:// change container to newer JMeter version that will support JDK-10
 docker run \
+    --network="host" \
 	--name jmeter_performance \
 	--mount source=$1,target=/jmeter \
 	-t droplr/jmeter \
