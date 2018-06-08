@@ -17,5 +17,4 @@ docker run \
 	-o report__$(date +%Y%m%d_%H%M%S)/
 
 
-
-#sudo docker run -v c:/Users/Dmytro-PC/tmp:/jmeter -t droplr/jmeter -n -t PerformanceTestPlan.jmx -j ./result/jmeter_$(date +%Y%m%d_%H%M%S) -l ./result/result_$(date +%Y%m%d_%H%M%S).jtl -e -o report__$(date +%Y%m%d_%H%M%S)/
+#sudo bash runPerformanceTest.sh '/Users/{username}/IdeaProjects/weighted-sticky-load-balancer/performance'
