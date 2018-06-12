@@ -28,15 +28,12 @@ IO threads perform non blocking tasks, when worker threads can.
 To change default server settings - change need settings in the **`application.properties`**.
 
 ## Run program
-Load balancer can be runned by using [Gradle](https://gradle.org/): 
+Load balancer can be runned locally by using [Gradle](https://gradle.org/): 
 
 `./gradlew run`
 
 ## Performance
 For measuring performance was used [Apache JMeter](http://jmeter.apache.org) that currently is the leading open-source tool for load and performance testing.
-
-Default JMeter java configuration comes with 512 Mo and very little GC tuning. That's why I change the heap memory for JMeter with the following parameters:
-`HEAP="-Xms512m -Xmx1750m"`
 
 The performance test was started on the computer with the following characteristics:
 - 2,7 GHz Intel Core i5
