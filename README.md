@@ -34,6 +34,7 @@ Load balancer can be runned locally by using [Gradle](https://gradle.org/):
 
 ## Performance
 For measuring performance was used [Apache JMeter](http://jmeter.apache.org) that currently is the leading open-source tool for load and performance testing.
+By using [docker-jmeter](https://github.com/Droplr/docker-jmeter) exists opportunity to easily run JMeter tests without installing Java on your machine.
 
 The performance test was started on the computer with the following characteristics:
 - 2,7 GHz Intel Core i5
