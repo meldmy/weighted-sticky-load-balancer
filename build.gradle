@@ -14,6 +14,11 @@ buildscript {
     }
 }
 
+bootJar {
+    baseName = 'weighted-sticky-load-balancer'
+    version =  '0.1.0'
+}
+
 plugins {
     id 'java'
     id 'jacoco'
