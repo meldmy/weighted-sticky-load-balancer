@@ -28,9 +28,17 @@ IO threads perform non blocking tasks, when worker threads can.
 To change default server settings - change need settings in the **`application.properties`**.
 
 ## Run program
-Load balancer can be runned locally by using [Gradle](https://gradle.org/): 
+1. Build an Docker image with current state of project by using:
+```
+./gradlew build docker
+```
 
-`./gradlew run`
+2. Run isolated container with already created project image:
+```
+docker run --rm -p 8899:8899 -t meldmy/weighted-sticky-load-balancer
+```
+
+Then project container process runs on a host :+1:
 
 ## Performance
 For measuring performance was used [Apache JMeter](http://jmeter.apache.org) that currently is the leading open-source tool for load and performance testing.
