@@ -59,7 +59,7 @@ Throughput is calculated as requests/unit of time. The time is calculated from t
 Following example show how to run performance test in the `./performance` folder and pass the parameter that is a folder where will be stored performance test report:
 
 ```
-bash runPerformanceTest.sh '/pathWhereYouHaveAvailableDockerVolume/weighted-sticky-load-balancer/performance'
+bash runPerformanceTest.sh '/pathToFolderWithReport/weighted-sticky-load-balancer/performance'
 ```
 
 Test results and charts will be created after the test is completed in the **`./performance/report`** folder.
