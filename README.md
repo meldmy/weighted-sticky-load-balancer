@@ -56,9 +56,11 @@ Throughput is calculated as requests/unit of time. The time is calculated from t
 > The formula is: **Throughput = (number of requests) / (total time)**.
 
 ## Run performance test:
-In the `./performance` folder run the following command:
+Following example show how to run performance test in the `./performance` folder and pass the parameter that is a folder where will be stored performance test report:
 
-`jmeter -n -t PerformanceTestPlan.jmx -l logFile.jtl -e -o report/`
+```
+bash runPerformanceTest.sh '/pathWhereYouHaveAvailableDockerVolume/weighted-sticky-load-balancer/performance'
+```
 
 Test results and charts will be created after the test is completed in the **`./performance/report`** folder.
 
