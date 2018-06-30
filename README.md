@@ -65,8 +65,3 @@ bash runPerformanceTest.sh '/path/to/folder/where/you/want/to/store/the/performa
 ```
 
 Test results and charts will be created after the test is completed.
-
-For the following test execution you should remove useless files before the test starts. To automate this use the following command:
- 
-`rm -f logFile.jtl && rm -dfr report/ && jmeter -n -t PerformanceTestPlan.jmx -l logFile.jtl -e -o report/`
-
