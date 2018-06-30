@@ -64,7 +64,7 @@ Following example show how to run performance test in the `./performance` folder
 bash runPerformanceTest.sh '/path/to/folder/where/you/want/to/store/the/performance/report'
 ```
 
-Test results and charts will be created after the test is completed in the **`./performance/report`** folder.
+Test results and charts will be created after the test is completed.
 
 For the following test execution you should remove useless files before the test starts. To automate this use the following command:
  
