@@ -44,6 +44,8 @@ Then project container process runs on a host :+1:
 For measuring performance was used [Apache JMeter](http://jmeter.apache.org) that currently is the leading open-source tool for load and performance testing.
 By using [docker-jmeter](https://github.com/Droplr/docker-jmeter) exists opportunity to easily run JMeter tests without installing Java on your machine.
 
+<a href="url"><img src="https://github.com/meldmy/weighted-sticky-load-balancer/blob/master/JMeterLoadTestingScenarios.jpeg" align="center" height="332px" width="521px"></a>
+
 The performance test was started on the computer with the following characteristics:
 - 2,7 GHz Intel Core i5
 - 8 GB 1867 MHz DDR3. 
